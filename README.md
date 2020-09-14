@@ -1,24 +1,51 @@
-# README
+# タスク管理アプリ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## バージョン情報
+- Ruby 2.6.5
+- Ruby on Rails 5.2.4
+- PostgreSQL 12.4
 
-Things you may want to cover:
+## システムの要件
+- [ ] 自分のタスクを登録したい
+- [ ] タスクに終了期限を設定できるようにしたい
+- [ ] タスクに優先順位をつけたい
+- [ ] タスクのステータス（未着手・着手・完了）を管理したい
+- [ ] ステータスでタスクを絞り込みたい
+- [ ] タスク名でタスクを検索したい
+- [ ] タスクを一覧で表示したい。
+- [ ] 一覧画面で優先順位、終了期限を元にしてソートしたい
+- [ ] タスクにラベルをつけて分類したい
+- [ ] ユーザ登録し、自分が登録したタスクだけを見られるようにしたい
 
-* Ruby version
+## サポートブラウザ
+- macOS/Chrome各最新版を想定
 
-* System dependencies
+## テーブル設計
+### Userテーブル
+|カラム名|データ型|
+---|---
+|name|string|
+|email|string|
+|password_digest|string|
+|admin|boolean|
 
-* Configuration
+### Taskテーブル
+|カラム名|データ型|
+---|---
+|title|string|
+|content|text|
+|deadline|datetime|
+|priority|integer|
+|status|integer|
+|user_id|bigint|
 
-* Database creation
+### Tagテーブル
+|カラム名|データ型|
+---|---
+|task_id|bigint|
+|genre_id|bigint|
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Genreテーブル
+|カラム名|データ型|
+---|---
+|genre_name|string|
