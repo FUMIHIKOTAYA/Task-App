@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :testtask, class: Task do
-    title { 'Faker::Name.first_name' }
-    content { 'Faker::Name.name' }
+    title { 'タスク１' }
+    content { 'タスク１内容' }
   end
 end
