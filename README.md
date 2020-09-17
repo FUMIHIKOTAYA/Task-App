@@ -49,3 +49,28 @@
 |カラム名|データ型|
 ---|---
 |genre_name|string|
+
+## Herokuへのデプロイ手順
+1. デプロイ前にコミット、アセットプリコンパイル
+
+`git add -A`
+
+`git commmit -m "任意のコメント"`
+
+`rails assets:precompile RAILS_ENV=production`
+
+2. Herokuにログイン
+
+`heroku login`
+
+3. Heroku上にアプリケーションを作成
+
+`heroku create`
+
+4. Heroku上にデプロイ
+
+`git push heroku master`
+
+5. データベースのマイグレーション
+
+`heroku run rails db:migrate`
