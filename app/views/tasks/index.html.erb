@@ -6,6 +6,7 @@
     <tr>
       <th>タスク名</th>
       <th>タスク詳細</th>
+      <th>終了期限</th>
       <th>詳細</th>
       <th>編集</th>
       <th>削除</th>
@@ -17,6 +18,7 @@
       <tr>
         <td class="task_row"><%= task.title %></td>
         <td><%= task.content %></td>
+        <td><%= task.deadline %></td>
         <td><%= link_to %q(詳細), task_path(task.id) %></td>
         <td><%= link_to %q(編集), edit_task_path(task.id) %></td>
         <td><%= link_to %q(削除), task_path(task.id), method: :delete, data: { confirm: %q(削除します。よろしいですか。) } %></td>
@@ -26,4 +28,5 @@
   </tbody>
 </table>
 <br>
+<%= link_to %q(終了期限でソートする), tasks_path(sort_expired: "true") %><br>
 <%= link_to %q(タスクを登録する), new_task_path %>
