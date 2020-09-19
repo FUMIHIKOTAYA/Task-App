@@ -15,14 +15,13 @@
 
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
-        <td class="task_row"><%= task.title %></td>
+      <tr class="task_row">
+        <td><%= task.title %></td>
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
         <td><%= link_to %q(詳細), task_path(task.id) %></td>
         <td><%= link_to %q(編集), edit_task_path(task.id) %></td>
         <td><%= link_to %q(削除), task_path(task.id), method: :delete, data: { confirm: %q(削除します。よろしいですか。) } %></td>
-
       </tr>
     <% end %>
   </tbody>

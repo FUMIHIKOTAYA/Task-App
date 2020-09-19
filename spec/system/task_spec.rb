@@ -20,17 +20,29 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[1]).to have_content 'factory_title1'
       end
     end
+    context '終了期限でソートするというリンクを押した場合' do
+      it '終了期限の降順に並び替えられたタスク一覧が表示される' do
+        click_on '終了期限でソートする'
+        expect(page).to have_content 'タスク一覧'
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content 'factory_title2'
+        expect(task_list[1]).to have_content 'factory_title1'
+      end
+    end
   end
 
   describe '新規作成機能' do
     context 'タスクを新規作成した場合' do
       it '作成したタスクが表示される' do
         visit new_task_path
-        fill_in 'タスク名', with: 'systemspec'
-        fill_in 'タスク詳細', with: 'createtest'
+        fill_in 'タスク名', with: 'title_sample'
+        fill_in 'タスク詳細', with: 'content_sample'
+        select_date("2020,9,29", from: "終了期限")
+        select_time("17", "00", from: "終了期限")
         click_on '登録する'
-        expect(page).to have_content 'systemspec'
-        expect(page).to have_content 'createtest'
+        expect(page).to have_content 'title_sample'
+        expect(page).to have_content 'content_sample'
+        expect(page).to have_content '2020/09/29 17:00'
       end
     end
   end
