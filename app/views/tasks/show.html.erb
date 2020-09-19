@@ -2,5 +2,7 @@
 
 <p>タスク名:<%= @task.title %></p>
 <p>タスク詳細:<%= @task.content %></p>
+<p>終了期限:<%= @task.deadline %></p>
+<p>ステータス:<%= @task.human_attribute_enum(:status) %></p>
 
 <%= link_to %q(戻る), tasks_path %>

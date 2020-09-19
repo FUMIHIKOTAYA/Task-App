@@ -213,3 +213,9 @@ ja:
     action:
       new: '登録する'
       edit: '更新する'
+  enums:
+    task:
+      status:
+        waiting: 未着手
+        working: 着手中
+        done: 完了
