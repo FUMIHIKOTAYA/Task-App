@@ -4,6 +4,8 @@ class TasksController < ApplicationController
   def index
     if params[:sort_expired]
       @tasks = Task.all.order(deadline: :DESC)
+    elsif params[:title]
+      @tasks = Task.where(['title LIKE?', "%#{params[:title]}%"]).order(created_at: :DESC)
     else
       @tasks = Task.all.order(created_at: :DESC)
     end

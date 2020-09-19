@@ -1,6 +1,12 @@
 <h1><%= t('view.task.index_task') %></h1>
 <p><%= notice %></p>
 
+<%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
+  <%= form.label :title, %q(タスク名)  %><br>
+  <%= form.text_field :title %><br>
+  <%= form.submit %q(検索) %>
+<% end %>
+
 <table>
   <thead>
     <tr>
