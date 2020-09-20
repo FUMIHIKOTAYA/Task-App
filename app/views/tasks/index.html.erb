@@ -2,8 +2,10 @@
 <p><%= notice %></p>
 
 <%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
-  <%= form.label :title, %q(タスク名)  %><br>
+  <%= form.label :title, 'タスク名'  %><br>
   <%= form.text_field :title %><br>
+  <%= form.label :status, 'ステータス' %><br>
+  <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}) %><br>
   <%= form.submit %q(検索) %>
 <% end %>
 
