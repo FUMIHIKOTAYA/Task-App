@@ -17,7 +17,7 @@
   <%= form.label :deadline %><br>
   <%= form.datetime_select :deadline %><br>
   <%= form.label :status %><br>
-  <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}) %><br>
+  <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}),  include_blank: true %><br>
 
   <%= form.submit %>
 <% end %>
