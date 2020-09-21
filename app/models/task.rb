@@ -1,6 +1,7 @@
 class Task < ApplicationRecord
   validates :title, presence: true
   validates :content, presence: true
+  validates :status, presence: true
 
   enum status: {
     waiting: 0,

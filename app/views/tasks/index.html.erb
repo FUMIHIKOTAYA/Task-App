@@ -2,23 +2,23 @@
 <p><%= notice %></p>
 
 <%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
-  <%= form.label :title, 'タスク名'  %><br>
+  <%= form.label :title, t('view.task.name')  %><br>
   <%= form.text_field :title %><br>
-  <%= form.label :status, 'ステータス' %><br>
+  <%= form.label :status, t('view.task.content') %><br>
   <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}), include_blank: true %><br>
-  <%= form.submit %q(検索) %>
+  <%= form.submit t('view.search') %>
 <% end %>
 
 <table>
   <thead>
     <tr>
-      <th>タスク名</th>
-      <th>タスク詳細</th>
-      <th>終了期限</th>
-      <th>ステータス</th>
-      <th>詳細</th>
-      <th>編集</th>
-      <th>削除</th>
+      <th><%= t('view.task.name') %></th>
+      <th><%= t('view.task.content') %></th>
+      <th><%= t('view.task.deadline') %></th>
+      <th><%= t('view.task.status') %></th>
+      <th><%= t('view.show') %></th>
+      <th><%= t('view.edit') %></th>
+      <th><%= t('view.delete') %></th>
     </tr>
   </thead>
 
@@ -29,13 +29,13 @@
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
         <td><%= task.human_attribute_enum(:status) %></td>
-        <td><%= link_to %q(詳細), task_path(task.id) %></td>
-        <td><%= link_to %q(編集), edit_task_path(task.id) %></td>
-        <td><%= link_to %q(削除), task_path(task.id), method: :delete, data: { confirm: %q(削除します。よろしいですか。) } %></td>
+        <td><%= link_to t('view.show'), task_path(task.id) %></td>
+        <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
+        <td><%= link_to t('view.delete'), task_path(task.id), method: :delete, data: { confirm: t('view.delete_confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-<%= link_to %q(終了期限でソートする), tasks_path(sort_expired: "true") %><br>
-<%= link_to %q(タスクを登録する), new_task_path %>
+<%= link_to t('view.sorted_deadline'), tasks_path(sort_expired: "true") %><br>
+<%= link_to t('view.create_task'), new_task_path %>

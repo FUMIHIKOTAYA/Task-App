@@ -6,7 +6,7 @@ class TasksController < ApplicationController
         @tasks = Task.all.order(deadline: :DESC)
       elsif params[:title].blank? && params[:status]
         @tasks = Task.search_status(params).sorted
-      elsif params[:title] && params[:status].blank?
+      elsif params[:title].present? && params[:status].blank?
         @tasks = Task.search_title(params).sorted
       elsif params[:title] && params[:status]
         @tasks = Task.search_title(params).search_status(params).sorted
@@ -21,17 +21,26 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    if @task.save
-      redirect_to tasks_path, notice: %q(タスクを登録しました。)
-    else
+    if params[:back]
       render :new
+    else
+      if @task.save
+        redirect_to tasks_path, notice: %q(タスクを登録しました。)
+      else
+        render :new
+      end
     end
-  end
+end
 
   def show
   end
 
   def edit
+  end
+
+  def confirm
+    @task = Task.new(task_params)
+    render :new if @task.invalid?
   end
 
   def update

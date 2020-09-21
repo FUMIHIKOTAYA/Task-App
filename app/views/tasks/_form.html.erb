@@ -1,14 +1,11 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: @task, local: true, url: choose_new_or_edit) do |form| %>
+<% if @task.errors.any? %>
+  <ul>
+    <% @task.errors.full_messages.each do |message| %>
+     <li class="error_messages"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
 
   <%= form.label :title %><br>
   <%= form.text_field :title %><br>
@@ -19,5 +16,5 @@
   <%= form.label :status %><br>
   <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}),  include_blank: true %><br>
 
-  <%= form.submit %>
+  <%= form.submit t('view.create') %>
 <% end %>
