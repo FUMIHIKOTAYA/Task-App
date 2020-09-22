@@ -24,6 +24,11 @@ ja:
       index_task: タスク一覧
       new_task: タスク登録
       edit_task: タスク編集
+    flash:
+      save: タスクを登録しました。
+      update: タスクを編集しました。
+      delete: タスクを削除しました。
+      search: タスク名/タスク詳細で検索してください。
   activerecord:
     errors:
       messages:

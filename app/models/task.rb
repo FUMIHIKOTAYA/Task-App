@@ -12,4 +12,5 @@ class Task < ApplicationRecord
   scope :search_title, -> params { where(['title LIKE?', "%#{params[:title]}%"]) }
   scope :search_status, -> params { where(status: params[:status]) }
   scope :sorted, -> { order(created_at: :DESC) }
+  scope :sorted_deadline, -> { order(deadline: :DESC) }
 end
