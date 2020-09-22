@@ -6,7 +6,7 @@
   <%= form.text_field :title %><br>
   <%= form.label :status, t('view.task.content') %><br>
   <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}), include_blank: true %><br>
-  <%= form.submit t('view.search') %>
+  <%= form.submit t('view.search'), id: "searchbutton" %>
 <% end %>
 
 <table>
