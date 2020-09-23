@@ -7,11 +7,11 @@ class TasksController < ApplicationController
     elsif params[:sort_expired]
       @tasks = Task.all.sorted_deadline
     elsif params[:title].blank? && params[:status]
-      @tasks = Task.search_status(params).sorted
+      @tasks = Task.search_status(params[:status]).sorted
     elsif params[:title] && params[:status].blank?
-      @tasks = Task.search_title(params).sorted
+      @tasks = Task.search_title(params[:title]).sorted
     elsif params[:title] && params[:status]
-      @tasks = Task.search_title(params).search_status(params).sorted
+      @tasks = Task.search_title(params[:title]).search_status(params[:status]).sorted
     else
       @tasks = Task.all.sorted
     end
