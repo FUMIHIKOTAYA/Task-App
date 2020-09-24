@@ -16,6 +16,7 @@
       <th><%= t('view.task.content') %></th>
       <th><%= t('view.task.deadline') %></th>
       <th><%= t('view.task.status') %></th>
+      <th><%= t('view.task.priority') %></th>
       <th><%= t('view.show') %></th>
       <th><%= t('view.edit') %></th>
       <th><%= t('view.delete') %></th>
@@ -29,6 +30,7 @@
         <td><%= task.content %></td>
         <td><%= task.deadline %></td>
         <td><%= task.human_attribute_enum(:status) %></td>
+        <td><%= task.human_attribute_enum(:priority) %></td>
         <td><%= link_to t('view.show'), task_path(task.id) %></td>
         <td><%= link_to t('view.edit'), edit_task_path(task.id) %></td>
         <td><%= link_to t('view.delete'), task_path(task.id), method: :delete, data: { confirm: t('view.delete_confirm') } %></td>

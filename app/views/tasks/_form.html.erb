@@ -15,6 +15,8 @@
   <%= form.datetime_select :deadline %><br>
   <%= form.label :status %><br>
   <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}),  include_blank: true %><br>
+  <%= form.label :priority %><br>
+  <%= form.select :priority, options_for_select(Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}),  include_blank: true %><br>
 
   <%= form.submit t('view.create') %>
 <% end %>

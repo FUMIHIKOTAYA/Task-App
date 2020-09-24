@@ -5,6 +5,10 @@ ja:
         waiting: 未着手
         working: 着手中
         done: 完了
+      priority:
+        low: 低
+        middle: 中
+        high: 高
   view:
     create: 登録する
     back: 戻る
@@ -21,6 +25,7 @@ ja:
       content: タスク詳細
       deadline: 終了期限
       status: ステータス
+      priority: 優先度
       index_task: タスク一覧
       new_task: タスク登録
       edit_task: タスク編集

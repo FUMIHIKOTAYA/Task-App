@@ -4,11 +4,13 @@
   <%= f.hidden_field :content %>
   <%= f.hidden_field :deadline %>
   <%= f.hidden_field :status %>
+  <%= f.hidden_field :priority %>
 
   <p><%= "#{t('view.task.name')}：#{@task.title}" %></p>
   <p><%= "#{t('view.task.content')}：#{@task.content}" %></p>
   <p><%= "#{t('view.task.deadline')}：#{@task.deadline}" %></p>
   <p><%= "#{t('view.task.status')}：#{@task.human_attribute_enum(:status)}" %></p>
+  <p><%= "#{t('view.task.priority')}：#{@task.human_attribute_enum(:priority)}" %></p>
 
   <%= f.submit t('view.create') %></p>
   <%= f.submit t('view.back'), name: 'back' %></p>

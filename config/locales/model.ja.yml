@@ -8,7 +8,12 @@ ja:
         content: タスク詳細
         deadline: 終了期限
         status: ステータス
-      task/status:  
+        priority: 優先度
+      task/status:
         waiting: 未着手
         working: 着手中
         done: 完了
+      task/priority:
+        low: 低
+        middle: 中
+        high: 高

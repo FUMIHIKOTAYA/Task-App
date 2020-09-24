@@ -4,5 +4,6 @@
 <p><%= t('view.task.content') %>:<%= @task.content %></p>
 <p><%= t('view.task.deadline') %>:<%= @task.deadline %></p>
 <p><%= t('view.task.status') %>:<%= @task.human_attribute_enum(:status) %></p>
+<p><%= t('view.task.priority') %>:<%= @task.human_attribute_enum(:priority) %></p>
 
 <%= link_to t('view.back'), tasks_path %>
