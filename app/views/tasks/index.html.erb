@@ -9,6 +9,7 @@
   <%= form.submit t('view.search'), id: "searchbutton" %>
 <% end %>
 
+<%= paginate @tasks %>
 <table>
   <thead>
     <tr>
