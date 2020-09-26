@@ -43,11 +43,13 @@ RSpec.describe 'タスク管理機能', type: :system do
         select_date("2020,9,29", from: "終了期限")
         select_time("17", "00", from: "終了期限")
         select '着手中', from: 'ステータス'
+        select '高', from: '優先度'
         click_on '登録する'
         expect(page).to have_content 'title_sample'
         expect(page).to have_content 'content_sample'
         expect(page).to have_content '2020/09/29 17:00'
         expect(page).to have_content '着手中'
+        expect(page).to have_content '高'
       end
     end
   end

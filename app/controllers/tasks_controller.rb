@@ -6,6 +6,8 @@ class TasksController < ApplicationController
       redirect_to tasks_path, notice: t('view.flash.search')
     elsif params[:sort_expired]
       @tasks = Task.all.sorted_deadline
+    elsif params[:sort_priority]
+      @tasks = Task.all.sorted_priority
     elsif params[:title].blank? && params[:status]
       @tasks = Task.search_status(params[:status]).sorted
     elsif params[:title] && params[:status].blank?
