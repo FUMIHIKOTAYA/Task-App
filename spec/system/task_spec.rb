@@ -32,6 +32,16 @@ RSpec.describe 'タスク管理機能', type: :system do
         expect(task_list[2]).to have_content 'factory_title1'
       end
     end
+    context '優先順位でソートするというリンクを押した場合' do
+      it '優先順位の高い順に並び替えられたタスク一覧が表示される' do
+        click_on '優先順位でソートする'
+        expect(page).to have_content 'タスク一覧'
+        task_list = all('.task_row')
+        expect(task_list[0]).to have_content 'factory_title3'
+        expect(task_list[1]).to have_content 'factory_title1'
+        expect(task_list[2]).to have_content 'factory_title2'
+      end
+    end
   end
 
   describe '新規作成機能' do

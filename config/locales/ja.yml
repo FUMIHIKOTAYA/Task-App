@@ -19,7 +19,7 @@ ja:
     create_confirm: 登録します。よろしいですか。
     delete_confirm: 削除します。よろしいですか。
     sorted_deadline: 終了期限でソートする
-    sorted_priority: 優先度でソートする
+    sorted_priority: 優先順位でソートする
     create_task: タスクを登録する
     task:
       name: タスク名
