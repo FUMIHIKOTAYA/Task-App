@@ -1,6 +1,11 @@
-<h2><%= t('view.task.content_task') %></h2>
+<h1><%= t('view.task.content') %></h1>
 
-<p>タスク名:<%= @task.title %></p>
-<p>タスク詳細:<%= @task.content %></p>
+<div class="ml-3 mb-5">
+<p><%= t('view.task.name') %>:<%= @task.title %></p>
+<p><%= t('view.task.content') %>:<%= @task.content %></p>
+<p><%= t('view.task.deadline') %>:<%= @task.deadline %></p>
+<p><%= t('view.task.status') %>:<%= @task.human_attribute_enum(:status) %></p>
+<p><%= t('view.task.priority') %>:<%= @task.human_attribute_enum(:priority) %></p>
+</div>
 
-<%= link_to %q(戻る), tasks_path %>
+<button class="btn btn-info ml-3 mb-3"><%= link_to t('view.back'), tasks_path %></button>

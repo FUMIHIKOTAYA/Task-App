@@ -1,19 +1,24 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーがあります。</h2>
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= form.label :title %><br>
-  <%= form.text_field :title %><br>
-  <%= form.label :content %><br>
-  <%= form.text_field :content %><br>
-
-  <%= form.submit %>
+<%= form_with(model: @task, local: true, url: choose_new_or_edit) do |form| %>
+<% if @task.errors.any? %>
+  <ul>
+    <% @task.errors.full_messages.each do |message| %>
+     <li class="error_messages"><%= message %></li>
+    <% end %>
+  </ul>
 <% end %>
+
+<div class="button mx-3 my-3">
+  <p><span class="bold"><%= form.label :title %></p>
+  <%= form.text_field :title %><br><br>
+  <p><span class="bold"><%= form.label :content %></p>
+  <%= form.text_field :content %><br><br>
+  <p><span class="bold"><%= form.label :deadline %></p>
+  <%= form.datetime_select :deadline %><br><br>
+  <p><span class="bold"><%= form.label :status %></p>
+  <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}),  include_blank: true %><br><br>
+  <p><span class="bold"><%= form.label :priority %></p>
+  <%= form.select :priority, options_for_select(Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}),  include_blank: true %><br><br>
+
+  <%= form.submit t('view.create'), class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>
