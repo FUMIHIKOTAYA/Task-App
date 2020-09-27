@@ -24,7 +24,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context '終了期限でソートするというリンクを押した場合' do
       it '終了期限の降順に並び替えられたタスク一覧が表示される' do
-        click_on '終了期限でソートする'
+        click_link '終了期限でソートする'
         expect(page).to have_content 'タスク一覧'
         task_list = all('.task_row')
         expect(task_list[0]).to have_content 'factory_title2'
@@ -34,7 +34,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     end
     context '優先順位でソートするというリンクを押した場合' do
       it '優先順位の高い順に並び替えられたタスク一覧が表示される' do
-        click_on '優先順位でソートする'
+        click_link '優先順位でソートする'
         expect(page).to have_content 'タスク一覧'
         task_list = all('.task_row')
         expect(task_list[0]).to have_content 'factory_title3'
