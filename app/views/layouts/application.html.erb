@@ -10,6 +10,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav class="navbar navbar-dark" style="background-color:#889bb3;">
+        <a class="navbar-brand" href="#!">
+          <img src="/assets/notebook.png" width="30" height="30" alt="">
+          タスク管理アプリ
+        </a>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
+      </div>
+      <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy;2020 TaskApp.</p>
+      </div>
+    </footer>
   </body>
 </html>

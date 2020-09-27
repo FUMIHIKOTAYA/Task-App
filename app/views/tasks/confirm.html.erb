@@ -1,4 +1,5 @@
-<h2><%= t('view.create_confirm') %></h2>
+<h3><%= t('view.create_confirm') %></h3>
+<div class="row my-4 ml-3">
 <%= form_with(model: @task, url: tasks_path, local: true) do |f| %>
   <%= f.hidden_field :title %>
   <%= f.hidden_field :content %>
@@ -12,6 +13,7 @@
   <p><%= "#{t('view.task.status')}：#{@task.human_attribute_enum(:status)}" %></p>
   <p><%= "#{t('view.task.priority')}：#{@task.human_attribute_enum(:priority)}" %></p>
 
-  <%= f.submit t('view.create') %></p>
-  <%= f.submit t('view.back'), name: 'back' %></p>
+  <%= f.submit t('view.create'), class: "btn btn-primary btn-lg my-2" %><br>
+  <%= f.submit t('view.back'), name: 'back', class: "btn btn-info my-3" %>
 <% end %>
+</div>

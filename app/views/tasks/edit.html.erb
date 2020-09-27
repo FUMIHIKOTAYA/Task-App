@@ -1,4 +1,4 @@
-<h2><%= t('view.task.edit_task') %></h2>
+<h1><%= t('view.task.edit_task') %></h1>
 <%= render 'form' %>
-<%= link_to t('view.show'), task_path %>
-<%= link_to t('view.back'), tasks_path %>
+<button class="btn btn-info ml-3 my-3"><%= link_to t('view.show'), task_path %></button>
+<button class="btn btn-info ml-1 my-3"><%= link_to t('view.back'), tasks_path %></button>
