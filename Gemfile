@@ -13,6 +13,8 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
+gem 'bcrypt', '3.1.11'
+
 gem 'kaminari'
 
 group :development, :test do
