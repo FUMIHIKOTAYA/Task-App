@@ -1,21 +1,23 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i(show edit update destroy)
+  before_action :limit_access, only: %i(edit update destroy)
+  before_action :authenticate_user, only: %i(index)
 
   def index
     if params[:title].blank? && params[:status] == ''
       redirect_to tasks_path, notice: t('view.flash.search')
     elsif params[:sort_expired]
-      @tasks = Task.page(params[:page]).per(8).sorted_deadline
+      @tasks = current_user.tasks.page(params[:page]).per(8).sorted_deadline
     elsif params[:sort_priority]
-      @tasks = Task.page(params[:page]).per(8).sorted_priority
+      @tasks = current_user.tasks.page(params[:page]).per(8).sorted_priority
     elsif params[:title].blank? && params[:status]
-      @tasks = Task.page(params[:page]).per(8).search_status(params[:status]).sorted
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_status(params[:status]).sorted
     elsif params[:title] && params[:status].blank?
-      @tasks = Task.page(params[:page]).per(8).search_title(params[:title]).sorted
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).sorted
     elsif params[:title] && params[:status]
-      @tasks = Task.page(params[:page]).per(8).search_title(params[:title]).search_status(params[:status]).sorted
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).search_status(params[:status]).sorted
     else
-      @tasks = Task.page(params[:page]).per(8).sorted
+      @tasks = current_user.tasks.page(params[:page]).per(8).sorted
     end
   end
 
@@ -24,7 +26,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if params[:back]
       render :new
     else
@@ -43,7 +45,7 @@ end
   end
 
   def confirm
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     render :new if @task.invalid?
   end
 
@@ -68,5 +70,20 @@ end
 
   def set_task
     @task = Task.find(params[:id])
+  end
+
+  def limit_access
+    @task = Task.find_by(id: params[:id])
+    unless @task.user_id == current_user.id
+      redirect_to tasks_path, notice: %q(実行権限がありません。)
+    end
+  end
+
+  def authenticate_user
+    @current_user = User.find_by(id: session[:user_id])
+    if @current_user.nil?
+      flash[:notice] = %q(ログインして始められます。)
+      redirect_to new_session_path
+    end
   end
 end

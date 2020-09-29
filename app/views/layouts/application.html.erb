@@ -16,9 +16,19 @@
           <img src="/assets/notebook.png" width="30" height="30" alt="">
           タスク管理アプリ
         </a>
+        <% if logged_in? %>
+          <%= link_to "Profile", user_path(current_user.id) %>
+          <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+        <% else %>
+          <%= link_to "Sign up", new_user_path %>
+          <%= link_to "Login", new_session_path %>
+        <% end %>
       </nav>
     </header>
     <div class="container-fluid">
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
       <%= yield %>
       </div>
       <footer class="footer">
