@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: %i(show edit update)
+  before_action :limit_access, only: %i(show edit update)
   before_action :logged_user, only: %i(new)
-  before_action :another_account, only: %i(show)
 
   def new
     @user = User.new
@@ -9,30 +10,49 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to user_path(@user.id)
     else
       render :new
     end
   end
 
-  def show; end
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path, notice: %q(プロフィールを編集しました。)
+    else
+      render :edit
+    end
+  end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation)
   end
 
-  def logged_user
-    if logged_in?
-      redirect_to user_path(current_user.id), notice: %q(ログイン済みです。)
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  def limit_access
+    @user = User.find_by(id: params[:id])
+    unless @user.id == current_user.id
+      flash.now[:danger] = %q(実行権限がありません。)
+      render :show
     end
   end
 
-  def another_account
-    @user = User.find(params[:id])
-    unless params[:id].to_i == current_user.id
-      redirect_to tasks_path, notice: %q(実行権限がありません。)
+  def logged_user
+    if logged_in?
+      redirect_to user_path(current_user.id), notice: %q(ログイン済みです。)
     end
   end
 end

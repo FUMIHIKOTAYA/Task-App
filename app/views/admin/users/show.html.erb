@@ -1,0 +1,29 @@
+<h1><%= 'ユーザーの詳細' %></h1>
+
+<h3><%= @user.name %>さんのタスク一覧</h3>
+<div class="row mx-3 my-1">
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th><%= t('view.task.name') %></th>
+      <th><%= t('view.task.content') %></th>
+      <th><%= t('view.task.deadline') %></th>
+      <th><%= t('view.task.status') %></th>
+      <th><%= t('view.task.priority') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.tasks.each do |task| %>
+      <tr class="task_row">
+        <td><%= task.title %></td>
+        <td><%= task.content %></td>
+        <td><%= task.deadline %></td>
+        <td><%= task.human_attribute_enum(:status) %></td>
+        <td><%= task.human_attribute_enum(:priority) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<button class="btn btn-info ml-3 my-3"><%= link_to t('view.back'), admin_users_path %></button>
