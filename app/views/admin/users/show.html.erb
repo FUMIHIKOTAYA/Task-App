@@ -1,5 +1,12 @@
 <h1><%= 'ユーザーの詳細' %></h1>
 
+<div class="row mx-3 my-3">
+  <p><span class="bold">ユーザー名:</span> <%= @user.name %></p>
+  <p><span class="bold">メールアドレス:</span> <%= @user.email %></p>
+  <p><span class="bold">管理者権限:</span> <%= @user.admin %></p>
+  <p><span class="bold">タスク件数:</span> <%= @user.tasks.size %></p>
+</div>
+
 <h3><%= @user.name %>さんのタスク一覧</h3>
 <div class="row mx-3 my-1">
 <table class="table table-bordered table-hover">

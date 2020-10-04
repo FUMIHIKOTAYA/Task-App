@@ -26,8 +26,13 @@
       </nav>
     </header>
     <div class="container-fluid">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "#{key}") %>
+      <% if logged_in? && @current_user.admin? %>
+        <button class="btn btn-primary btn-lg ml-1 my-4"><%= link_to %q(ユーザー管理), admin_users_path %></button>
+      <% end %>
+      <% if flash.notice %>
+        <div class="alert alert-info"><%= flash.notice %></div>
+      <% elsif flash.alert %>
+        <div class="alert alert-warning"><%= flash.alert %></div>
       <% end %>
       <%= yield %>
       </div>

@@ -44,10 +44,7 @@ class UsersController < ApplicationController
 
   def limit_access
     @user = User.find_by(id: params[:id])
-    unless @user.id == current_user.id
-      flash.now[:danger] = %q(実行権限がありません。)
-      render :show
-    end
+    redirect_to tasks_path, notice: %q(実行権限がありません。) if @user.id != current_user.id && current_user.admin == false
   end
 
   def logged_user

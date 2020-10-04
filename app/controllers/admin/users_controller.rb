@@ -1,8 +1,9 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
+  before_action :check_administrator
 
   def index
-    @users = User.select(:id, :name, :email, :created_at).order(created_at: :DESC).page(params[:page]).per(8)
+    @users = User.select(:id, :name, :email, :admin, :created_at).order(created_at: :DESC).page(params[:page]).per(8)
   end
 
   def new
@@ -41,11 +42,14 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
   end
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def check_administrator
+    redirect_to tasks_path, alert: '管理者権限のあるユーザーアカウントでログインする必要があります。' unless current_user.admin?
   end
 end

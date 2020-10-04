@@ -1,5 +1,4 @@
 <h1><%= 'ユーザー管理' %></h1>
-<p><%= notice %></p>
 
 <div class="row mx-3 my-1">
 <table class="table table-bordered table-hover">
@@ -7,6 +6,7 @@
     <tr>
       <th><%= 'ユーザー名' %></th>
       <th><%= 'メールアドレス' %></th>
+      <th><%= '権限' %></th>
       <th><%= 'タスク件数' %></th>
       <th><%= t('view.show') %></th>
       <th><%= t('view.edit') %></th>
@@ -18,7 +18,8 @@
     <% @users.each do |user| %>
       <tr class="user_row">
         <td><%= user.name %></td>
-        <td><%= user.email %></td>
+        <td><%= user.email  %></td>
+        <td><%= user.admin? %></td>
         <td><%= user.tasks.size %></td>
         <td><%= link_to t('view.show'), admin_user_path(user.id), class: "btn btn-info" %></td>
         <td><%= link_to t('view.edit'), edit_admin_user_path(user.id), class: "btn btn-info" %></td>
