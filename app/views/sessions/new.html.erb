@@ -1,8 +1,12 @@
-<h1>Log in</h1>
+<h1><%= t('view.login') %></h1>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+<div class="form-group ml-3 my-4">
   <%= f.label :email %>
-  <%= f.email_field :email %>
+  <%= f.email_field :email, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
   <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+  <%= f.password_field :password, class:"form-control col-4" %>
+</div>
+  <%= f.submit t('view.login'), class: "btn btn-primary btn-lg ml-3 my-4" %>
 <% end %>

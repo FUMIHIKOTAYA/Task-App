@@ -8,7 +8,7 @@ RSpec.describe 'タスク管理機能', type: :system do
     visit new_session_path
     fill_in 'Email', with: 'user@factory.com'
     fill_in 'Password', with: 'bbbbbb'
-    click_on 'Log in'
+    click_button 'ログイン'
     visit tasks_path
   end
 

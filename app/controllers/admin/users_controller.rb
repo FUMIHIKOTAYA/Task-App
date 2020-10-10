@@ -28,7 +28,7 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path, notice: %q(ユーザー情報を更新しました。)
+      redirect_to admin_user_path, notice: t('view.flash.admin_user_update')
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to admin_users_path, notice: %q(ユーザーアカウントを削除しました。)
+    redirect_to admin_users_path, notice: t('view.flash.admin_user_delete')
   end
 
   private
@@ -50,6 +50,6 @@ class Admin::UsersController < ApplicationController
   end
 
   def check_administrator
-    redirect_to tasks_path, alert: '管理者権限のあるユーザーアカウントでログインする必要があります。' unless current_user.admin?
+    redirect_to tasks_path, alert: t('view.flash.check_administrator') unless current_user.admin?
   end
 end

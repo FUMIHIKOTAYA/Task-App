@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path, notice: %q(プロフィールを編集しました。)
+      redirect_to user_path, notice: t('view.flash.user_update')
     else
       render :edit
     end
@@ -44,12 +44,12 @@ class UsersController < ApplicationController
 
   def limit_access
     @user = User.find_by(id: params[:id])
-    redirect_to tasks_path, notice: %q(実行権限がありません。) if @user.id != current_user.id && current_user.admin == false
+    redirect_to tasks_path, notice: t('view.flash.limit_access') if @user.id != current_user.id && current_user.admin == false
   end
 
   def logged_user
     if logged_in?
-      redirect_to user_path(current_user.id), notice: %q(ログイン済みです。)
+      redirect_to user_path(current_user.id), notice: t('view.flash.logged_user')
     end
   end
 end

@@ -1,4 +1,4 @@
-<h1><%= 'ユーザー編集' %></h1>
+<h1><%= t('view.edit_user') %></h1>
 
 <%= form_with(model: @user, local: true) do |form| %>
 <% if @user.errors.any? %>
@@ -9,19 +9,27 @@
   </ul>
 <% end %>
 
-<div class="button mx-3 my-3">
+<div class="form-group ml-3 my-4">
   <p><span class="bold"><%= form.label :name %></p>
-  <%= form.text_field :name %><br><br>
-  <p><span class="bold"><%= form.label :email %></p>
-  <%= form.email_field :email %><br><br>
-  <p><span class="bold"><%= form.label :password %></p>
-  <%= form.password_field :password %><br><br>
-  <p><span class="bold"><%= form.label :password_confirmation %></p>
-  <%= form.password_field :password_confirmation %><br><br>
-  <p><span class="bold"><%= form.label :admin %></p>
-  <p><%= form.check_box :admin ,{}, "true", "false" %></p><br><br>
-
-  <%= form.submit t('view.create'), class: "btn btn-primary btn-lg" %>
-  <% end %>
+  <%= form.text_field :name, class:"form-control col-4" %>
 </div>
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :email %></p>
+  <%= form.email_field :email, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :password %></p>
+  <%= form.password_field :password, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :password_confirmation %></p>
+  <%= form.password_field :password_confirmation, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :admin %></p>
+  <p><%= form.check_box :admin ,{}, "true", "false" %></p>
+</div>
+  <%= form.submit t('view.create'), class: "btn btn-primary btn-lg btn-lg ml-3 my-4" %>
+  <% end %>
+
 <button class="btn btn-info ml-3 my-3"><%= link_to t('view.back'), admin_users_path %></button>

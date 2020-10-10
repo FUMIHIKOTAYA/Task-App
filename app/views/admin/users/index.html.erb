@@ -1,29 +1,29 @@
-<h1><%= 'ユーザー管理' %></h1>
+<h1><%= t('view.user.index') %></h1>
 
 <div class="row mx-3 my-1">
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th><%= 'ユーザー名' %></th>
-      <th><%= 'メールアドレス' %></th>
-      <th><%= '権限' %></th>
-      <th><%= 'タスク件数' %></th>
-      <th><%= t('view.show') %></th>
-      <th><%= t('view.edit') %></th>
-      <th><%= t('view.delete') %></th>
+      <th class="align-middle"><%= t('view.user_name') %></th>
+      <th class="align-middle"><%= t('view.user.emai') %></th>
+      <th class="align-middle"><%= t('view.user.authority') %></th>
+      <th class="align-middle"><%= t('view.show_task') %></th>
+      <th class="align-middle"><%= t('view.show_admin') %></th>
+      <th class="align-middle"><%= t('view.edit_user') %></th>
+      <th class="align-middle"><%= t('view.delete_user') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @users.each do |user| %>
       <tr class="user_row">
-        <td><%= user.name %></td>
-        <td><%= user.email  %></td>
-        <td><%= user.admin? %></td>
-        <td><%= user.tasks.size %></td>
-        <td id='show-link'><%= link_to t('view.show'), admin_user_path(user.id), class: "btn btn-info" %></td>
-        <td id='edit-link'><%= link_to t('view.edit'), edit_admin_user_path(user.id), class: "btn btn-info" %></td>
-        <td id='delete-link'><%= link_to t('view.delete'), admin_user_path(user.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
+        <td class="align-middle"><%= user.name %></td>
+        <td class="align-middle"><%= user.email  %></td>
+        <td class="align-middle"><%= user.human_attribute_enum(:admin) %></td>
+        <td class="align-middle"><%= user.tasks.size %></td>
+        <td id='show-link' class="align-middle"><%= link_to t('view.show'), admin_user_path(user.id), class: "btn btn-info" %></td>
+        <td id='edit-link' class="align-middle"><%= link_to t('view.edit'), edit_admin_user_path(user.id), class: "btn btn-info" %></td>
+        <td id='delete-link' class="align-middle"><%= link_to t('view.delete'), admin_user_path(user.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +32,4 @@
 <div class="row justify-content-around">
   <%= paginate @users %>
 </div>
-<button class="btn btn-info ml-1 my-4"><%= link_to %q(ユーザーを登録する), new_admin_user_path %></button>
+<button class="btn btn-info ml-1 my-4"><%= link_to t('view.create_user'), new_admin_user_path %></button>

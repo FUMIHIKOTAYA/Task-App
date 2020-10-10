@@ -14,3 +14,20 @@
  *= require_tree .
  *= require_self
  */
+
+ html {
+   font-size: 62.5%;
+ }
+
+ body {
+   font-size: 1.6rem;
+ }
+
+ .nav-item {
+   margin: 0 15px;
+   font-size:1.4rem;
+ }
+
+ .align-middle {
+  text-align: center;
+ }

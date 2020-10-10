@@ -23,3 +23,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         admin: 管理者権限
+      user/admin:
+        false: 一般
+        true: 管理者
+        

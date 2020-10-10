@@ -1,14 +1,14 @@
-<h1><%= 'ユーザーの詳細' %></h1>
+<h1><%= t('view.show_admin') %></h1>
 
-<div class="row mx-3 my-3">
-  <p><span class="bold">ユーザー名:</span> <%= @user.name %></p>
-  <p><span class="bold">メールアドレス:</span> <%= @user.email %></p>
-  <p><span class="bold">管理者権限:</span> <%= @user.admin %></p>
-  <p><span class="bold">タスク件数:</span> <%= @user.tasks.size %></p>
+<div class="col ml-2">
+  <p><%= t('view.user.name') %>: <%= @user.name %>
+  <p><%= t('view.user.email') %>: <%= @user.email %>
+  <p><%= t('view.user.admin') %>: <%= @user.human_attribute_enum(:admin) %>
+  <p><%= t('view.show_task') %>: <%= @user.tasks.size %>
 </div>
 
-<h3><%= @user.name %>さんのタスク一覧</h3>
-<div class="row mx-3 my-1">
+<div class="row mx-3 my-3">
+  <h4><%= @user.name %><%= t('view.show_admin_task') %></h4>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
@@ -19,7 +19,6 @@
       <th><%= t('view.task.priority') %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @user.tasks.each do |task| %>
       <tr class="task_row">
@@ -29,8 +28,8 @@
         <td><%= task.human_attribute_enum(:status) %></td>
         <td><%= task.human_attribute_enum(:priority) %></td>
       </tr>
-    <% end %>
   </tbody>
+  <% end %>
 </table>
 </div>
 <button class="btn btn-info ml-3 my-3"><%= link_to t('view.back'), admin_users_path %></button>

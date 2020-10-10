@@ -75,14 +75,14 @@ end
   def limit_access
     @task = Task.find_by(id: params[:id])
     unless @task.user_id == current_user.id
-      redirect_to tasks_path, notice: %q(実行権限がありません。)
+      redirect_to tasks_path, notice: t('view.flash.limit_access')
     end
   end
 
   def authenticate_user
     @current_user = User.find_by(id: session[:user_id])
     if @current_user.nil?
-      flash[:notice] = %q(ログインして始められます。)
+      flash[:notice] = t('view.flash.authenticate_user')
       redirect_to new_session_path
     end
   end

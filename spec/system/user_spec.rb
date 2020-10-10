@@ -30,7 +30,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         visit new_session_path
         fill_in 'Email', with: 'admin@factory.com'
         fill_in 'Password', with: 'aaaaaa'
-        click_on 'Log in'
+        click_button 'ログイン'
         expect(page).to have_content 'factory_name1'
       end
     end
@@ -38,7 +38,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
       visit new_session_path
       fill_in 'Email', with: 'user@factory.com'
       fill_in 'Password', with: 'bbbbbb'
-      click_on 'Log in'
+      click_button 'ログイン'
     end
     context 'ユーザーがログインしている場合' do
       it '自分の詳細画面(マイページ)にアクセスできること' do
@@ -54,7 +54,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     end
     context 'ユーザーがログインしている場合' do
       it 'ログアウトができること' do
-        click_on "Logout"
+        click_link "ログアウト"
         expect(page).to have_content 'ログアウトしました'
       end
     end
@@ -66,7 +66,7 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         visit new_session_path
         fill_in 'Email', with: 'user@factory.com'
         fill_in 'Password', with: 'bbbbbb'
-        click_on 'Log in'
+        click_button 'ログイン'
       end
       it '管理画面にアクセスできないこと' do
         visit admin_users_path
@@ -78,11 +78,11 @@ RSpec.describe 'ユーザー管理機能', type: :system do
         visit new_session_path
         fill_in 'Email', with: 'admin@factory.com'
         fill_in 'Password', with: 'aaaaaa'
-        click_on 'Log in'
+        click_button 'ログイン'
         visit admin_users_path
       end
       it '管理画面にアクセスできること' do
-        expect(page).to have_selector 'h1', text: 'ユーザー管理'
+        expect(page).to have_selector 'h1', text: 'ユーザー一覧'
       end
       it 'ユーザーの新規登録ができること' do
         visit new_admin_user_path

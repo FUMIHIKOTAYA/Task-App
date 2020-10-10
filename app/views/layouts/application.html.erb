@@ -10,24 +10,31 @@
   </head>
 
   <body>
-    <header>
-      <nav class="navbar navbar-dark" style="background-color:#889bb3;">
-        <a class="navbar-brand" href="#!">
+      <nav class="navbar navbar-expand-md navbar-dark" style="background-color:#889bb3;">
+        <a class="navbar-brand" href="#">
           <img src="/assets/notebook.png" width="30" height="30" alt="">
-          タスク管理アプリ
+          <%= t('view.task_app') %>
         </a>
-        <% if logged_in? %>
-          <%= link_to "Profile", user_path(current_user.id) %>
-          <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">　
+          <% if logged_in? %>
+
+          <li class="nav-item"><%= link_to t('view.task.index_task'), tasks_path %></li>
+          <li class="nav-item"><%= link_to t('view.profile'), user_path(current_user.id) %></li>
+          <li class="nav-item"><%= link_to t('view.logout'), session_path(current_user.id), method: :delete %></li>
         <% else %>
-          <%= link_to "Sign up", new_user_path %>
-          <%= link_to "Login", new_session_path %>
+          <li class="nav-item"><%= link_to t('view.sign_up'), new_user_path %></li>
+          <li class="nav-item"><%= link_to t('view.login'), new_session_path %></li>
         <% end %>
+        </ul>
+        </div>
       </nav>
-    </header>
     <div class="container-fluid">
       <% if logged_in? && @current_user.admin? %>
-        <button class="btn btn-primary btn-lg ml-1 my-4"><%= link_to %q(ユーザー管理), admin_users_path %></button>
+        <button class="btn btn-primary btn-lg ml-1 my-4"><%= link_to t('view.account_management'), admin_users_path %></button>
       <% end %>
       <% if flash.notice %>
         <div class="alert alert-info"><%= flash.notice %></div>
