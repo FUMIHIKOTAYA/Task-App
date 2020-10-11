@@ -23,8 +23,7 @@ class Admin::UsersController < ApplicationController
     @tasks = @user.tasks.order(created_at: :DESC)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)
