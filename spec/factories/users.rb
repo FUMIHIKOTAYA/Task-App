@@ -3,12 +3,12 @@ FactoryBot.define do
     name { 'factory_name1' }
     email { 'admin@example.com' }
     password { 'password' }
-    admin { 'true' }
+    admin { true }
   end
   factory :user, class: User do
     name { 'factory_name2' }
     email { 'user@example.com' }
     password { 'password' }
-    admin { 'false' }
+    admin { false }
   end
 end
