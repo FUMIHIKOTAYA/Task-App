@@ -73,11 +73,9 @@ end
   end
 
   def limit_access
-    @task = Task.find_by(id: params[:id])
-    unless @task.user_id == current_user.id
-      redirect_to tasks_path, notice: t('view.flash.limit_access')
+    task = Task.find_by(id: params[:id])
+      redirect_to tasks_path, notice: t('view.flash.limit_access') unless @task.user_id == current_user.id
     end
-  end
 
   def authenticate_user
     @current_user = User.find_by(id: session[:user_id])
