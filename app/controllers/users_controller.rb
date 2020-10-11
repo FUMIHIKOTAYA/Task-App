@@ -46,8 +46,6 @@ class UsersController < ApplicationController
   end
 
   def logged_user
-    if logged_in?
-      redirect_to user_path(current_user.id), notice: t('view.flash.logged_user')
-    end
+    redirect_to user_path(current_user.id), notice: t('view.flash.logged_user') if logged_in?
   end
 end
