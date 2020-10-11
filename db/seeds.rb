@@ -23,3 +23,5 @@ task_list = []
     }
 end
 Task.create!(task_list)
+
+User.create!(name: "adminperson", email: "admin@example.com", password: "password", password_confirmation: "password", admin: true)
