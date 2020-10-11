@@ -28,16 +28,16 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     context 'ログインした場合' do
       it '登録済みのユーザー名が表示されること' do
         visit new_session_path
-        fill_in 'Email', with: 'admin@factory.com'
-        fill_in 'Password', with: 'aaaaaa'
+        fill_in 'Email', with: 'admin@example.com'
+        fill_in 'Password', with: 'password'
         click_button 'ログイン'
         expect(page).to have_content 'factory_name1'
       end
     end
     before do
       visit new_session_path
-      fill_in 'Email', with: 'user@factory.com'
-      fill_in 'Password', with: 'bbbbbb'
+      fill_in 'Email', with: 'user@example.com'
+      fill_in 'Password', with: 'password'
       click_button 'ログイン'
     end
     context 'ユーザーがログインしている場合' do
@@ -64,8 +64,8 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     context '一般ユーザーがログインしている場合' do
       before do
         visit new_session_path
-        fill_in 'Email', with: 'user@factory.com'
-        fill_in 'Password', with: 'bbbbbb'
+        fill_in 'Email', with: 'user@example.com'
+        fill_in 'Password', with: 'password'
         click_button 'ログイン'
       end
       it '管理画面にアクセスできないこと' do
@@ -76,8 +76,8 @@ RSpec.describe 'ユーザー管理機能', type: :system do
     context '管理ユーザーがログインしている場合' do
       before do
         visit new_session_path
-        fill_in 'Email', with: 'admin@factory.com'
-        fill_in 'Password', with: 'aaaaaa'
+        fill_in 'Email', with: 'admin@example.com'
+        fill_in 'Password', with: 'password'
         click_button 'ログイン'
         visit admin_users_path
       end
