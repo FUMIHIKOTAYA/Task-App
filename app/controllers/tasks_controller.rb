@@ -78,8 +78,8 @@ end
     end
 
   def authenticate_user
-    @current_user = User.find_by(id: session[:user_id])
-    if @current_user.nil?
+    current_user = User.find_by(id: session[:user_id])
+    if current_user.nil?
       flash[:notice] = t('view.flash.authenticate_user')
       redirect_to new_session_path
     end
