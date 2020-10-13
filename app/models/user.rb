@@ -12,6 +12,8 @@ class User < ApplicationRecord
     uniqueness: true
   before_validation { email.downcase! }
 
+  private
+
   def prevent_admin_zero
     if User.where(admin: true).count == 1 && self.admin == false
       throw(:abort)
@@ -23,6 +25,4 @@ class User < ApplicationRecord
       throw(:abort)
     end
   end
-
-
 end

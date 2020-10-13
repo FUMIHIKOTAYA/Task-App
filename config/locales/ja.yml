@@ -69,6 +69,7 @@ ja:
       session_delete: ログアウトしました。
       admin_user_update: ユーザー情報を更新しました。
       admin_user_delete: ユーザーアカウントを削除しました。
+      user_undeletable: 管理者のアカウントが2つ以上ある場合に削除できます。
       check_administrator: 管理者権限のあるユーザーアカウントでログインする必要があります。
   activerecord:
     errors:
