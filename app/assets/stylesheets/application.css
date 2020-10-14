@@ -34,7 +34,7 @@
 
  .btn-primary {
    background: #5694ba;
-   color: ##e8ebed;
+   color: #e8ebed;
  }
 
  .btn-primary:hover, .btn-primary:focus,
@@ -44,12 +44,12 @@
  .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
  .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
    background: #5694ba;
-   color: ##e8ebed;
+   color: #e8ebed;
 }
 
 .btn-info {
   background: #5db09d;
-  color: ##e8ebed;
+  color: #e8ebed;
 }
 
 .btn-info:hover, .btn-info:focus,
@@ -59,12 +59,12 @@
 .btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus,
 .btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus {
   background: #5db09d;
-  color: ##e8ebed;
+  color: #e8ebed;
 }
 
 .btn-warning {
   background: #d1bc88;
-  color: ##e8ebed;
+  color: #e8ebed;
 }
 
 .btn-warning:hover, .btn-warning:focus,
@@ -74,5 +74,5 @@
 .btn-warning.disabled:focus, .btn-warning[disabled]:focus, fieldset[disabled] .btn-warning:focus,
 .btn-warning.disabled.focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning.focus {
   background: #d1bc88;
-  color: ##e8ebed;
+  color: #e8ebed;
 }
