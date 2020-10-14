@@ -31,3 +31,48 @@
  .align-middle {
   text-align: center;
  }
+
+ .btn-primary {
+   background: #5694ba;
+   color: ##e8ebed;
+ }
+
+ .btn-primary:hover, .btn-primary:focus,
+ .btn-primary:active, .btn-primary:active:focus, .btn-primary:active:hover, .btn-primary:active.focus,
+ .btn-primary.active, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary.active.focus,
+ .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover,
+ .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus,
+ .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus {
+   background: #5694ba;
+   color: ##e8ebed;
+}
+
+.btn-info {
+  background: #5db09d;
+  color: ##e8ebed;
+}
+
+.btn-info:hover, .btn-info:focus,
+.btn-info:active, .btn-info:active:focus, .btn-info:active:hover, .btn-info:active.focus,
+.btn-info.active, .btn-info.active:focus, .btn-info.active:hover, .btn-info.active.focus,
+.btn-info.disabled:hover, .btn-info[disabled]:hover, fieldset[disabled] .btn-info:hover,
+.btn-info.disabled:focus, .btn-info[disabled]:focus, fieldset[disabled] .btn-info:focus,
+.btn-info.disabled.focus, .btn-info[disabled].focus, fieldset[disabled] .btn-info.focus {
+  background: #5db09d;
+  color: ##e8ebed;
+}
+
+.btn-warning {
+  background: #d1bc88;
+  color: ##e8ebed;
+}
+
+.btn-warning:hover, .btn-warning:focus,
+.btn-warning:active, .btn-warning:active:focus, .btn-warning:active:hover, .btn-warning:active.focus,
+.btn-warning.active, .btn-warning.active:focus, .btn-warning.active:hover, .btn-warning.active.focus,
+.btn-warning.disabled:hover, .btn-warning[disabled]:hover, fieldset[disabled] .btn-warning:hover,
+.btn-warning.disabled:focus, .btn-warning[disabled]:focus, fieldset[disabled] .btn-warning:focus,
+.btn-warning.disabled.focus, .btn-warning[disabled].focus, fieldset[disabled] .btn-warning.focus {
+  background: #d1bc88;
+  color: ##e8ebed;
+}
