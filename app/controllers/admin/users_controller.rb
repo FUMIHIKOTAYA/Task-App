@@ -1,9 +1,10 @@
 class Admin::UsersController < ApplicationController
   before_action :set_user, only: %i(show edit update destroy)
   before_action :check_administrator
+  before_action :user_login
 
   def index
-    @users = User.select(:id, :name, :email, :admin, :created_at).order(created_at: :DESC).page(params[:page]).per(8)
+    @users = User.select(:id, :name, :email, :admin, :created_at, :updated_at).order(created_at: :DESC).page(params[:page]).per(8)
   end
 
   def new
@@ -52,6 +53,10 @@ class Admin::UsersController < ApplicationController
   end
 
   def check_administrator
-    redirect_to tasks_path, alert: t('view.flash.check_administrator') unless current_user.admin?
+    redirect_to tasks_path, alert: t('view.flash.check_administrator') unless current_user.try(:admin?)
+  end
+
+  def user_login
+      redirect_to new_session_path, notice: t('view.flash.authenticate_user') if current_user.nil?
   end
 end
