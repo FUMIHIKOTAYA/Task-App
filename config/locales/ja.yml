@@ -67,6 +67,7 @@ ja:
       authenticate_user: ログインして始められます。
       login_failure: ログインに失敗しました。
       session_delete: ログアウトしました。
+      admin_user_new: 新しいユーザーを追加しました。
       admin_user_update: ユーザー情報を更新しました。
       admin_user_delete: ユーザーアカウントを削除しました。
       user_undeletable: 管理者のアカウントが2つ以上ある場合に削除できます。

@@ -1,6 +1,6 @@
 <h1><%= t('view.new_admin') %></h1>
 
-<%= form_with(model: @user, local: true) do |form| %>
+<%= form_with(model: [ :admin, @user], local: true) do |form| %>
 <% if @user.errors.any? %>
   <ul>
     <% @user.errors.full_messages.each do |message| %>
