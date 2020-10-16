@@ -5,6 +5,7 @@ FactoryBot.define do
     deadline { Time.current }
     status { 2 }
     priority { 1 }
+    user
   end
   factory :testtask_second, class: Task do
     title { 'factory_title2' }
@@ -12,6 +13,7 @@ FactoryBot.define do
     deadline { Time.current.next_month }
     status { 0 }
     priority { 0 }
+    user
   end
   factory :testtask_third, class: Task do
     title { 'factory_title3' }
@@ -19,5 +21,6 @@ FactoryBot.define do
     deadline { Time.current.tomorrow }
     status { 1 }
     priority { 2 }
+    user
   end
 end

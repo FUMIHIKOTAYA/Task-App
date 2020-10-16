@@ -1,0 +1,30 @@
+<h1><%= t('view.sign_up') %></h1>
+<h3><%= t('view.sigin_up_subtitle') %></h3>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <% if @user.errors.any? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+       <li class="error_messages"><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+<div class="form-group ml-3 my-4">
+  <%= f.label :name %>
+  <%= f.text_field :name, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <%= f.label :email %>
+  <%= f.email_field :email, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <%= f.label :password %>
+  <%= f.password_field :password, class:"form-control col-4" %>
+</div>
+<div class="form-group ml-3 my-4">
+  <%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation, class:"form-control col-4" %>
+</div>
+  <%= f.submit t('view.create'), class: "btn btn-primary btn-lg ml-3 my-4" %>
+<% end %>

@@ -1,9 +1,14 @@
 require 'rails_helper'
 RSpec.describe 'タスク管理機能', type: :system do
-  let!(:task) { FactoryBot.create(:testtask) }
-  let!(:second_task) { FactoryBot.create(:testtask_second) }
-  let!(:third_task) { FactoryBot.create(:testtask_third) }
+  let!(:factory_user) { FactoryBot.create(:user) }
+  let!(:task) { FactoryBot.create(:testtask, user: factory_user) }
+  let!(:second_task) { FactoryBot.create(:testtask_second, user: factory_user) }
+  let!(:third_task) { FactoryBot.create(:testtask_third, user: factory_user) }
   before do
+    visit new_session_path
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'password'
+    click_button 'ログイン'
     visit tasks_path
   end
 

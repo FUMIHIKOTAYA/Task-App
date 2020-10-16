@@ -1,17 +1,16 @@
 <h1><%= t('view.task.index_task') %></h1>
-<p><%= notice %></p>
 
 <%= form_with(url: tasks_path, method: :get, local: true) do |form| %>
-  <div class="row align-content-lg-center ml-1 mb-5">
-    <div class="col-lg-3">
+  <div class="row align-content-md-center ml-1 mb-5">
+    <div class="col-md-3">
       <p><span class="bold"><%= form.label :title, t('view.task.name')  %></p>
       <%= form.text_field :title %>
     </div>
-    <div class="col-lg-2">
-      <p><span class="bold"><%= form.label :status, t('view.task.content') %></p>
+    <div class="col-md-2">
+      <p><span class="bold"><%= form.label :status, t('view.task.status') %></p>
       <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}), include_blank: true %>
     </div>
-    <div class="col-lg-1">
+    <div class="col-md-1">
     <br>
       <%= form.submit t('view.search'), id: "searchbutton", class: "btn btn-primary btn-lg" %>
       </div>
@@ -21,28 +20,28 @@
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
-      <th><%= t('view.task.name') %></th>
-      <th><%= t('view.task.content') %></th>
-      <th><%= t('view.task.deadline') %></th>
-      <th><%= t('view.task.status') %></th>
-      <th><%= t('view.task.priority') %></th>
-      <th><%= t('view.show') %></th>
-      <th><%= t('view.edit') %></th>
-      <th><%= t('view.delete') %></th>
+      <th class="align-middle"><%= t('view.task.name') %></th>
+      <th class="align-middle"><%= t('view.task.content') %></th>
+      <th class="align-middle"><%= t('view.task.deadline') %></th>
+      <th class="align-middle"><%= t('view.task.status') %></th>
+      <th class="align-middle"><%= t('view.task.priority') %></th>
+      <th class="align-middle"><%= t('view.task.show_task') %></th>
+      <th class="align-middle"><%= t('view.task.edit_task') %></th>
+      <th class="align-middle"><%= t('view.task.delete_task') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @tasks.each do |task| %>
       <tr class="task_row">
-        <td><%= task.title %></td>
-        <td><%= task.content %></td>
-        <td><%= task.deadline %></td>
-        <td><%= task.human_attribute_enum(:status) %></td>
-        <td><%= task.human_attribute_enum(:priority) %></td>
-        <td><%= link_to t('view.show'), task_path(task.id), class: "btn btn-info" %></td>
-        <td><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-info" %></td>
-        <td><%= link_to t('view.delete'), task_path(task.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
+        <td class="align-middle"><%= task.title %></td>
+        <td class="align-middle"><%= task.content %></td>
+        <td class="align-middle"><%= task.deadline %></td>
+        <td class="align-middle"><%= task.human_attribute_enum(:status) %></td>
+        <td class="align-middle"><%= task.human_attribute_enum(:priority) %></td>
+        <td class="align-middle"><%= link_to t('view.show'), task_path(task.id), class: "btn btn-info" %></td>
+        <td class="align-middle"><%= link_to t('view.edit'), edit_task_path(task.id), class: "btn btn-info" %></td>
+        <td class="align-middle"><%= link_to t('view.delete'), task_path(task.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
       </tr>
     <% end %>
   </tbody>

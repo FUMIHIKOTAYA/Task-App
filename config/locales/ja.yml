@@ -10,17 +10,35 @@ ja:
         middle: 中
         high: 高
   view:
+    task_app: タスク管理アプリ
+    account_management: ユーザーアカウント管理
     create: 登録する
     back: 戻る
+    index:  タスク一覧へ
     show: 詳細
     edit: 編集
     delete: 削除
     search: 検索
+    sign_up: 新規登録
+    login: ログイン
+    logout: ログアウト
+    profile: プロファイル
+    sigin_up_subtitle: 使い方は簡単 - すぐに始められます。
+    show_email: 登録メールアドレス
+    show_task: タスク件数
+    show_user: さんのページ
+    edit_user: ユーザーの編集
+    new_admin: ユーザー登録
+    show_admin: ユーザーの詳細
+    show_admin_task: さんのタスク一覧
+    delete_user: アカウントの削除
     create_confirm: 登録します。よろしいですか。
     delete_confirm: 削除します。よろしいですか。
     sorted_deadline: 終了期限でソートする
     sorted_priority: 優先順位でソートする
     create_task: タスクを登録する
+    create_user: ユーザーを登録する
+    user_name: ユーザー名
     task:
       name: タスク名
       content: タスク詳細
@@ -30,11 +48,30 @@ ja:
       index_task: タスク一覧
       new_task: タスク登録
       edit_task: タスク編集
+      show_task: タスクの詳細
+      delete_task: タスクの削除
+    user:
+      name: ユーザー名
+      emai: メールアドレス
+      admin: 管理者権限
+      authority: 権限
+      index: ユーザー一覧
     flash:
       save: タスクを登録しました。
       update: タスクを編集しました。
       delete: タスクを削除しました。
       search: タスク名/タスク詳細で検索してください。
+      user_update: プロフィールを編集しました。
+      limit_access: 実行権限がありません。
+      logged_user: ログイン済みです。
+      authenticate_user: ログインして始められます。
+      login_failure: ログインに失敗しました。
+      session_delete: ログアウトしました。
+      admin_user_new: 新しいユーザーを追加しました。
+      admin_user_update: ユーザー情報を更新しました。
+      admin_user_delete: ユーザーアカウントを削除しました。
+      user_undeletable: 管理者のアカウントが2つ以上ある場合に削除できます。
+      check_administrator: 管理者権限のあるユーザーアカウントでログインする必要があります。
   activerecord:
     errors:
       messages:

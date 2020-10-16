@@ -17,3 +17,13 @@ ja:
         low: 低
         middle: 中
         high: 高
+      user:
+        name: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        admin: 管理者権限
+      user/admin:
+        false: 一般
+        true: 管理者
+        

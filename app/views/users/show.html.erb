@@ -1,0 +1,11 @@
+<h1><%= @user.name %><%= t('view.show_user') %></h1>
+
+<div class="ml-3 mb-5">
+<p><%= t('view.show_email') %>: <%= @user.email %></p>
+<p><%= t('view.show_task') %>: <%= @user.tasks.size %></p>
+</div>
+
+<% if @user.id == current_user.try(:id) %>
+<button class="btn btn-info ml-3 my-3"><%= link_to t('view.edit'), edit_user_path %></button>
+<button class="btn btn-info ml-1 my-3"><%= link_to t('view.index'), tasks_path %></button>
+<% end %>
