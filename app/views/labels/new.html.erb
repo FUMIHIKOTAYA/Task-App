@@ -1,0 +1,17 @@
+<%= form_with(model:@label, local: true ) do |form| %>
+<% if @label.errors.any? %>
+  <ul>
+    <% @label.errors.full_messages.each do |message| %>
+     <li class="error_messages"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :label_name %></p>
+  <%= form.text_field :label_name, class:"form-control col-4" %>
+</div>
+
+  <%= form.submit t('view.create'), class: "btn btn-primary btn-lg ml-3 my-4" %>
+<% end %>
+<button class="btn btn-info ml-1 my-4"><%= link_to t('view.index'), tasks_path %></button>

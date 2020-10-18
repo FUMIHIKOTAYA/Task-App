@@ -6,12 +6,18 @@
   <%= f.hidden_field :deadline %>
   <%= f.hidden_field :status %>
   <%= f.hidden_field :priority %>
+  <%= f.hidden_field :label_ids %>
 
   <p><%= "#{t('view.task.name')}：#{@task.title}" %></p>
   <p><%= "#{t('view.task.content')}：#{@task.content}" %></p>
   <p><%= "#{t('view.task.deadline')}：#{@task.deadline}" %></p>
   <p><%= "#{t('view.task.status')}：#{@task.human_attribute_enum(:status)}" %></p>
   <p><%= "#{t('view.task.priority')}：#{@task.human_attribute_enum(:priority)}" %></p>
+  <h4><%= t('view.task.label') %></h4>
+  <%= form.collection_check_boxes(:label_ids,  Label.where(user_id: nil), :id, :label_name) %>
+    <% unless current_user.tasks.blank?%>
+      <%= form.collection_check_boxes(:label_ids,  Label.where(user_id: current_user.id), :id, :label_name) %>
+    <% end %>
 
   <%= f.submit t('view.create'), class: "btn btn-primary btn-lg my-2" %><br>
   <%= f.submit t('view.back'), name: 'back', class: "btn btn-info my-3" %>

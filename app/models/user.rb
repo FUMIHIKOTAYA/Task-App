@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :tasks, dependent: :destroy
+  has_many :labels, dependent: :destroy
 
   before_update :prevent_admin_zero
   before_destroy :prevent_admin_disappear

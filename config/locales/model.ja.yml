@@ -26,4 +26,5 @@ ja:
       user/admin:
         false: 一般
         true: 管理者
-        
+      label:
+        label_name: ラベル名

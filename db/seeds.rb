@@ -11,6 +11,10 @@ User.create(name: "firstperson", email: "first@example.com", password: "ufirst",
                    )
 end
 
+10.times do |n|
+  Label.create!(label_name: "label_#{n+1}")
+end
+
 task_list = []
 10.times do |n|
   task_list <<
@@ -20,6 +24,7 @@ task_list = []
       status: 1,
       priority: 1,
       user_id: User.ids.sample,
+      label_ids: Label.ids.sample,
     }
 end
 Task.create!(task_list)

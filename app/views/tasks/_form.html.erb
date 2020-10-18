@@ -29,5 +29,17 @@
     <%= form.select :priority, options_for_select(Task.priorities.keys.map {|k| [I18n.t("enums.task.priority.#{k}"), k]}),  include_blank: true %>
   </div>
 </div>
+
+<div class="form-group ml-3 my-4">
+  <p><span class="bold"><%= form.label :label_ids, t('view.task.label') %></p>
+    <%= form.collection_check_boxes(:label_ids, Label.where(user_id: nil), :id, :label_name ) %>
+</div>
+<% if current_user.labels.present? %>
+  <div class="form-group ml-3 my-4">
+    <p><span class="bold"><%= form.label :label_ids, t('view.task.label_custom') %></p>
+      <%= form.collection_check_boxes(:label_ids, Label.where(user_id: current_user.id), :id, :label_name ) %>
+  </div>
+<% end %>
+
   <%= form.submit t('view.create'), class: "btn btn-primary btn-lg ml-3 my-4" %>
-  <% end %>
+<% end %>

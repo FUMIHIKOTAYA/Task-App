@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_054245) do
+ActiveRecord::Schema.define(version: 2020_10_18_105240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "labels", force: :cascade do |t|
-    t.string "label_name", default: "unlabeled", null: false
+    t.string "label_name", default: "", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -3,6 +3,8 @@ class Task < ApplicationRecord
   has_many :labels, through: :task_labels
   has_many :task_labels, dependent: :destroy
 
+  accepts_nested_attributes_for :task_labels, allow_destroy: true
+
   validates :title, presence: true, length: { maximum: 100 }
   validates :content, presence: true, length: { maximum: 1000 }
   validates :status, presence: true

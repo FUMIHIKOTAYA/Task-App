@@ -65,7 +65,7 @@ end
   private
 
   def task_params
-    params.require(:task).permit(:title, :content, :deadline, :status, :priority)
+    params.require(:task).permit(:title, :content, :deadline, :status, :priority, label_ids: [])
   end
 
   def set_task
