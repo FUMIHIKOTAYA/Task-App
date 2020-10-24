@@ -37,7 +37,7 @@ ja:
     sorted_deadline: 終了期限でソートする
     sorted_priority: 優先順位でソートする
     create_task: タスクを登録する
-    create_label: ラベルを登録する
+    create_label: ラベル作成
     create_user: ユーザーを登録する
     user_name: ユーザー名
     task:
@@ -52,7 +52,9 @@ ja:
       show_task: タスクの詳細
       delete_task: タスクの削除
       label: ラベル
+      custom_label: カスタムラベル
       index_label: ラベル一覧
+      delete_label: ラベルの削除
     user:
       name: ユーザー名
       emai: メールアドレス

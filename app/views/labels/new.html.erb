@@ -8,10 +8,10 @@
 <% end %>
 
 <div class="form-group ml-3 my-4">
-  <p><span class="bold"><%= form.label :label_name %></p>
+  <p><span class="bold"><%= form.label :label_name, t('view.task.label') %></p>
   <%= form.text_field :label_name, class:"form-control col-4" %>
 </div>
 
   <%= form.submit t('view.create'), class: "btn btn-primary btn-lg ml-3 my-4" %>
 <% end %>
-<button class="btn btn-info ml-1 my-4"><%= link_to t('view.index'), tasks_path %></button>
+<button class="btn btn-info ml-3 my-4"><%= link_to t('view.task.index_label'), labels_path %></button>

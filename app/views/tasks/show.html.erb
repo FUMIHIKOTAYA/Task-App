@@ -6,13 +6,11 @@
 <p><%= t('view.task.deadline') %>:<%= @task.deadline %></p>
 <p><%= t('view.task.status') %>:<%= @task.human_attribute_enum(:status) %></p>
 <p><%= t('view.task.priority') %>:<%= @task.human_attribute_enum(:priority) %></p>
-<strong>ラベル</strong>
+<p><%= t('view.task.label') %>:</p>
 <ul>
 <% @task.labels.each do |label| %>
-  <li><%= label.name %></li>
+  <li><%= label.label_name %></li>
 <% end %>
 </ul>
-
 </div>
-
 <button class="btn btn-info ml-3 mb-3"><%= link_to t('view.back'), tasks_path %></button>

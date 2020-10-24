@@ -2,17 +2,30 @@
 
 <div class="row mx-3 my-1">
 <table class="table table-bordered table-hover">
-<tbody>
-  <% @labels.each do |label| %>
-  <tr>
-    <th class="align-middle"><%= t('view.task.label') %></th>
-    <td class="align-middle"><%= label.name %></td>
-    <td class="align-middle"><%= link_to t('view.delete'), label_path(label.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
-  <% end %>
-  </tr>
-    </tbody>
-  </table>
-</div>
+  <thead>
+    <tr>
+      <th class="align-middle"><%= t('view.task.label') %></th>
+      <th class="align-middle"><%= t('view.task.delete_label') %></th>
+    </tr>
+  </thead>
 
-<button class="btn btn-info ml-1 my-4"><%= link_to t('view.create_label'), new_label_path %></button>
-<button class="btn btn-info ml-1 my-4"><%= link_to t('view.index'), tasks_path %></button>
+  <tbody>
+    <% @labels.each do |label| %>
+    <tr>
+      <td class="align-middle"><%= label.label_name %></td>
+      <td class="align-middle"><%= link_to t('view.delete'), label_path(label.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
+    <% end %>
+    </tr>
+    <% if current_user_admin? %>
+      <% @labels_general.each do |label| %>
+      <tr>
+        <td class="align-middle"><%= label.label_name %></td>
+        <td class="align-middle"><%= link_to t('view.delete'), label_path(label.id), method: :delete, data: { confirm: t('view.delete_confirm') }, class: "btn btn-warning" %></td>
+      <% end %>
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+</div>
+<button class="btn btn-info ml-3 my-4"><%= link_to t('view.create_label'), new_label_path %></button>
+<button class="btn btn-outline-dark ml-1 my-4"><%= link_to t('view.index'), tasks_path %></button>

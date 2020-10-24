@@ -1,6 +1,7 @@
 class LabelsController < ApplicationController
   def index
     @labels = Label.where(user_id: current_user.id)
+    @labels_general = Label.where(user_id: nil) if current_user.admin == true
   end
 
   def  new
