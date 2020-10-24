@@ -52,7 +52,6 @@ ja:
       show_task: タスクの詳細
       delete_task: タスクの削除
       label: ラベル
-      label_custom: カスタムラベル
       index_label: ラベル一覧
     user:
       name: ユーザー名
