@@ -23,6 +23,7 @@ class Task < ApplicationRecord
 
   scope :search_title, -> (title) { where('title LIKE?', "%#{title}%") }
   scope :search_status, -> (status) { where(status: status) }
+  scope :search_label, -> (label) { where(id: TaskLabel.where(label_id: label).pluck(:task_id)) }
   scope :sorted, -> { order(created_at: :DESC) }
   scope :sorted_deadline, -> { order(deadline: :DESC) }
   scope :sorted_priority, -> { order(priority: :DESC) }

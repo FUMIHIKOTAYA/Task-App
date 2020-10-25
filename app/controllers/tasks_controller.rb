@@ -4,18 +4,24 @@ class TasksController < ApplicationController
   before_action :authenticate_user, only: %i(index)
 
   def index
-    if params[:title].blank? && params[:status] == ''
+    if params[:title].blank? && params[:status] == '' && params[:label_id].blank?
       redirect_to tasks_path, notice: t('view.flash.search')
     elsif params[:sort_expired]
       @tasks = current_user.tasks.page(params[:page]).per(8).sorted_deadline
     elsif params[:sort_priority]
       @tasks = current_user.tasks.page(params[:page]).per(8).sorted_priority
-    elsif params[:title].blank? && params[:status]
+    elsif params[:title].blank? && params[:status] && params[:label_id].blank?
       @tasks = current_user.tasks.page(params[:page]).per(8).search_status(params[:status]).sorted
-    elsif params[:title] && params[:status].blank?
+    elsif params[:title] && params[:status].blank? && params[:label_id].blank?
       @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).sorted
-    elsif params[:title] && params[:status]
-      @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).search_status(params[:status]).sorted
+    elsif params[:title].blank? && params[:status].blank? && params[:label_id]
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_label(params[:label_id]).sorted
+    elsif params[:title] && params[:status].blank? && params[:label_id]
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).search_label(params[:label_id]).sorted
+    elsif params[:title].blank? && params[:status] && params[:label_id]
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_status(params[:status]).search_label(params[:label_id]).sorted
+    elsif params[:title] && params[:status] && params[:label_id]
+      @tasks = current_user.tasks.page(params[:page]).per(8).search_title(params[:title]).search_status(params[:status]).search_label(params[:label_id]).sorted
     else
       @tasks = current_user.tasks.page(params[:page]).per(8).sorted
     end
