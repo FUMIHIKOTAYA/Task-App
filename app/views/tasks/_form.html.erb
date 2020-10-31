@@ -35,7 +35,7 @@
 </div>
 
 <% if current_user.labels.present? %>
-  <div class="form-group ml-3 my-4">
+  <div class="form-group ml-3 my-4" id="label-test">
     <p><span class="bold"><%= form.label :label_ids, t('view.task.custom_label') %></p>
     <%= form.collection_check_boxes(:label_ids, Label.where(user_id: current_user.id), :id, :label_name) %>
   </div>

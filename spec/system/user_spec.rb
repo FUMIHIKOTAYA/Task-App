@@ -1,7 +1,7 @@
 require 'rails_helper'
 RSpec.describe 'ユーザー管理機能', type: :system do
-  let!(:administrator) { FactoryBot.create(:administrator) }
-  let!(:user) { FactoryBot.create(:user) }
+  let!(:administrator) { create(:administrator) }
+  let!(:user) { create(:user) }
 
   describe 'ユーザー登録機能' do
     context 'ユーザーを新規作成した場合' do
