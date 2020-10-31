@@ -37,7 +37,7 @@ task_list = []
 end
 Task.create!(task_list)
 
-label_list = ["すぐできる","時間かかる","簡単","難しい"]
-(1..4).each do |n|
+label_list = ["すぐできる","時間かかる","簡単","難しい","企画書","スケジュール計画","費用","実行","管理","報告"]
+(1..10).each do |n|
   label = Label.create!(label_name: label_list[n-1])
 end

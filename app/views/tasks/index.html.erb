@@ -10,11 +10,11 @@
       <p><span class="bold"><%= form.label :status, t('view.task.status') %></p>
       <%= form.select :status, options_for_select(Task.statuses.keys.map {|k| [I18n.t("enums.task.status.#{k}"), k]}), include_blank: true %>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <p><span class="bold"><%= form.label :label_id, t('view.task.label') %></p>
       <%= form.select :label_id, Label.pluck(:label_name, :id), include_blank: true %>
     </div>
-    <div class="col-md-1">
+    <div class="col-md-3">
     <br>
       <%= form.submit t('view.search'), id: "searchbutton", class: "btn btn-primary btn-lg" %>
       </div>
