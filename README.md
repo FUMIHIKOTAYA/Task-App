@@ -39,16 +39,16 @@
 |status|integer|
 |user_id|bigint|
 
-### Tagテーブル
+### Task_labelテーブル
 |カラム名|データ型|
 ---|---
-|task_id|bigint|
-|genre_id|bigint|
+|task_id|integer|
+|label_id|integer|
 
-### Genreテーブル
+### Labelテーブル
 |カラム名|データ型|
 ---|---
-|genre_name|string|
+|label_name|string|
 
 ## Herokuへのデプロイ手順
 1. デプロイ前にコミット、アセットプリコンパイル

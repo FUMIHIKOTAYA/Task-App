@@ -1,4 +1,17 @@
-User.create(name: "firstperson", email: "first@example.com", password: "ufirst", password_confirmation: "ufirst")
+User.create!(
+  name: "firstperson",
+  email: "first@example.com",
+  password: "password",
+  password_confirmation: "password",
+)
+
+User.create!(
+  name: "adminperson",
+  email: "admin@example.com",
+  password: "password",
+  password_confirmation: "password",
+  admin: true,
+)
 
 10.times do |n|
   name = Faker::Games::Pokemon.name
@@ -24,4 +37,7 @@ task_list = []
 end
 Task.create!(task_list)
 
-User.create!(name: "adminperson", email: "admin@example.com", password: "password", password_confirmation: "password", admin: true)
+label_list = ["すぐできる","時間かかる","簡単","難しい","企画書","スケジュール計画","費用","実行","管理","報告"]
+(1..10).each do |n|
+  label = Label.create!(label_name: label_list[n-1])
+end
